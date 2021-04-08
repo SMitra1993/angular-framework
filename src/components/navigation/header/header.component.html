@@ -1,0 +1,17 @@
+<mat-toolbar class="navigation-format">
+    <div fxHide.gt-xs>
+        <div class="col-lg-2">
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <i class="fa fa-bars navigation-icon-format"></i>
+            </button>
+            <label class="navigation-title-format">Tech Stack</label>
+        </div>
+    </div>
+    <div fxHide.gt-xs style="margin-left: auto;">
+        <div class="col-lg-2">
+            <button mat-icon-button [routerLink]="['/']">
+                <i class="fa fa-sign-out navigation-icon-format"></i>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>

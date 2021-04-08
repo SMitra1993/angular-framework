@@ -1,0 +1,162 @@
+<div class="registration-container">
+    <section class="container-fluid">
+        <!-- row and justify-content-center class is used to place the form in center -->
+        <section class="row justify-content-center">
+            <section class="row">
+                <form class="form-container registration-form-format" [formGroup]="registrationForm"
+                    (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <img class="logo-format" src="../../assets/images/tech_stack_icon.png">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label for="firstName"><b>First Name:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                                        placeholder="Enter first name" name="firstName" [ngModel]=firstName required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.firstName.valid && registrationForm.controls.firstName.dirty) 
+                            || (registrationForm.controls.firstName.touched && !registrationForm.controls.firstName.valid)
+                            ? 'Please provide a valid first name' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label for="lastName"><b>Last Name:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                                        placeholder="Enter last name" name="lastName" [ngModel]=lastName required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.lastName.valid && registrationForm.controls.lastName.dirty) 
+                            || (registrationForm.controls.lastName.touched && !registrationForm.controls.lastName.valid)
+                            ? 'Please provide a valid last name' : ''}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label for="address1"><b>Address 1:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="address1" class="form-control" id="address1"
+                                        placeholder="Enter address 1" name="address1" [ngModel]=address1 required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.address1.valid && registrationForm.controls.address1.dirty) 
+                            || (registrationForm.controls.address1.touched && !registrationForm.controls.address1.valid)
+                            ? 'Please provide a valid address 1' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label for="address2"><b>Address 2:</b></label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="address2" class="form-control" id="address2"
+                                        placeholder="Enter address 2" name="address2" [ngModel]=address2 required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="state"><b>State:</b></label><label class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="state" class="form-control" id="state"
+                                        placeholder="Enter state" name="state" [ngModel]=state required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.state.valid && registrationForm.controls.state.dirty) 
+                            || (registrationForm.controls.state.touched && !registrationForm.controls.state.valid)
+                            ? 'Please provide a valid state' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="city"><b>City:</b></label><label class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="city" class="form-control" id="city"
+                                        placeholder="Enter city" name="city" [ngModel]=city required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.city.valid && registrationForm.controls.city.dirty) 
+                            || (registrationForm.controls.city.touched && !registrationForm.controls.city.valid)
+                            ? 'Please provide a valid city' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="pinCode"><b>PinCode:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="text" formControlName="pinCode" class="form-control" id="pinCode"
+                                        placeholder="Enter pincode" name="pinCode" [ngModel]=pinCode required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.pinCode.valid && registrationForm.controls.pinCode.dirty) 
+                            || (registrationForm.controls.pinCode.touched && !registrationForm.controls.pinCode.valid)
+                            ? 'Please provide a valid pincode' : ''}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="emailId"><b>Email:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="email" formControlName="emailId" class="form-control" id="emailId"
+                                        aria-describeby="emailHelp" placeholder="Enter email" name="emailId"
+                                        [ngModel]=emailId required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.emailId.valid && registrationForm.controls.emailId.dirty) 
+                                    || (registrationForm.controls.emailId.touched && !registrationForm.controls.emailId.valid)
+                                    ? 'Please provide a valid email' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="password"><b>Password:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input type="password" formControlName="password" class="form-control" id="password"
+                                        placeholder="Enter password" name="password" [ngModel]=password required>
+                                    <i class="fa fa-info info-icon-format" [ngbTooltip]="list"></i>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.password.valid && registrationForm.controls.password.dirty) 
+                                || (registrationForm.controls.password.touched && !registrationForm.controls.password.valid)
+                                ? 'Please provide a valid password' : ''}}</pre>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <label for="mobile"><b>Mobile:</b></label><label
+                                    class="required-option-format">*</label>
+                                <div class="input-container">
+                                    <input phoneMask [preValue]="''" type="text"
+                                        [phoneControl]="registrationForm.controls['mobile']" formControlName="mobile"
+                                        class="form-control" id="mobile" placeholder="Enter mobile" name="mobile"
+                                        [ngModel]=mobile maxlength="16" required>
+                                </div>
+                                <pre class="error-text-format">{{(!registrationForm.controls.mobile.valid && registrationForm.controls.mobile.dirty) 
+                            || (registrationForm.controls.mobile.touched && !registrationForm.controls.mobile.valid)
+                            ? 'Please provide a valid mobile' : ''}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7 col-sm-7"></div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <button [disabled]="!registrationForm.controls.firstName.valid || !registrationForm.controls.lastName.valid
+                            || !registrationForm.controls.address1.valid || !registrationForm.controls.city.valid ||
+                            !registrationForm.controls.state.valid || !registrationForm.controls.pinCode.valid || 
+                            !registrationForm.controls.emailId.valid || !registrationForm.controls.password.valid || 
+                            !registrationForm.controls.mobile.valid" type="submit"
+                                class="btn btn-success btn-block">Submit</button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <p style="text-align: center;"> Already have an account? <a href=""
+                                    [routerLink]="['/']">Sign in</a></p>
+                        </div>
+                    </div>
+                    <ng-template #list>
+                        <div class="d-flex flex-column">
+                            <span>Please follow the below password policy provided below:</span>
+                            <span>a. Password must be at least 8 characters long</span>
+                            <span>b. Atleast 1 UPPER CASE letter</span>
+                            <span>c. Atleast 1 LOWER CASE letter</span>
+                            <span>d. Atleast 1 NUMERIC value</span>
+                            <span>e. Atleast 1 CHARACTER allowed (!@$&*)</span>
+                        </div>
+                    </ng-template>
+                </form>
+            </section>
+        </section>
+    </section>
+</div>

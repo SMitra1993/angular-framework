@@ -1,0 +1,40 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover,
+a:active {
+    color: lightgray;
+}
+
+.navigation-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+mat-toolbar {
+    border-radius: 3px;
+}
+
+@media (max-width: 959px) {
+    mat-toolbar {
+        border-radius: 0px;
+    }
+}
+.navigation-format {
+    background-color: #21606a;
+}
+
+.navigation-icon-format {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 0.8rem;
+}
+
+.navigation-title-format {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 0.2rem;
+}

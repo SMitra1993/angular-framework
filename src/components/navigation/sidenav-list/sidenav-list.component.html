@@ -1,0 +1,15 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+        <i class="fa fa-home icon"></i> <span class="nav-caption">Home</span>
+    </a>
+    <a mat-list-item routerLink="/home/my-profile" (click)="onSidenavClose()">
+        <i class="fa fa-user-circle icon"></i> <span class="nav-caption">My Profile</span>
+    </a>
+    <mat-list-item [matMenuTriggerFor]="menu">
+        <i class="fa fa-home icon"></i>&nbsp; <a matline>Example</a>
+    </mat-list-item>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onSidenavClose()">View profile</button>
+        <button mat-menu-item (click)="onSidenavClose()">Add contact</button>
+    </mat-menu>
+</mat-nav-list>
