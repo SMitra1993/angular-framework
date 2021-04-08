@@ -15,10 +15,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.initForm();
+    this._initForm();
   }
 
-  private initForm() {
+  private _initForm() {
     this.loginForm = new FormGroup({
       'emailId': new FormControl(null, [Validators.required,
       Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),

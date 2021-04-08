@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
     config.placement = 'right';
     config.triggers = 'hover';
   }
+
   firstName: string = '';
   lastName: string = '';
   address1: string = '';
@@ -26,10 +27,10 @@ export class RegistrationComponent implements OnInit {
   mobile: string = '';
 
   ngOnInit(): void {
-    this.initForm();
+    this._initForm();
   }
 
-  private initForm() {
+  private _initForm() {
     this.registrationForm = new FormGroup({
       'firstName': new FormControl(null, [
         Validators.pattern("^[A-Za-z -]+$"),

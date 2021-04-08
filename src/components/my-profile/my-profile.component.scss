@@ -1,0 +1,80 @@
+.profile-icon-format {
+    font-size: 25px;
+}
+/* set entire body that is webpage */
+body {
+    background: #383a3d;
+    padding-top: 25vh;
+}
+/* set form background colour*/
+form {
+    background: #fff;
+}
+/* set padding and size of th form */
+.form-container {
+    border-radius: 10px;
+    padding: 30px;
+}
+.registration-container {
+    margin-top: 5rem;
+}
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+}
+.icon {
+    padding: 10px;
+    background: rgba(4, 94, 100, 0.377);
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+[data-tip] {
+    position: relative;
+}
+[data-tip]:before {
+    content: "";
+    /* hides the tooltip when not hovered */
+    display: none;
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1a1a1a;
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    z-index: 8;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+}
+[data-tip]:after {
+    display: none;
+    content: attr(data-tip);
+    position: absolute;
+    top: 0.2rem;
+    left: 13rem;
+    padding: 5px 8px;
+    background: #1a1a1a;
+    color: #fff;
+    z-index: 9;
+    font-size: 0.75em;
+    height: 28px;
+    line-height: 18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+    display: block;
+}
+
+.registration-form-format {
+    width: 100%;
+}

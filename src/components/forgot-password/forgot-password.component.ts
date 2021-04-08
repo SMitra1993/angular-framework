@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
   confirmPassword: string = '';
 
   ngOnInit(): void {
-    this.initForm();
+    this._initForm();
   }
 
   comparePasswords(oldPassword: string, newPassword: string, confirmPassword: string) {
@@ -40,7 +40,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
 
-  private initForm() {
+  private _initForm() {
     this.forgotPasswordForm = new FormGroup({
       'oldPassword': new FormControl(null, [
         Validators.minLength(8),
