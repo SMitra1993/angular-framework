@@ -1,32 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ɵrenderComponent as renderComponent } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from '../components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegistrationComponent } from '../components/registration/registration.component';
-import { PhoneMaskDirective } from '../directives/phone-mask.directive';
-import { ForgotPasswordComponent } from '../components/forgot-password/forgot-password.component';
-import { MyProfileComponent } from '../components/my-profile/my-profile.component';
-import { HomeComponent } from '../components/home/home.component';
-import { HeaderComponent } from '../components/navigation/header/header.component';
-import { SidenavListComponent } from '../components/navigation/sidenav-list/sidenav-list.component';
-import { LayoutComponent } from '../components/layout/layout.component';
 import { NavModule } from './nav.module';
+import { MyProfileModule } from '../components/my-profile/my-profile.module';
+import { DirectiveModule } from './directive.module';
+import { RegistrationModule } from '../components/registration/registration.module';
+import { LoginModule } from '../components/login/login.module';
+import { HomeModule } from 'src/components/home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    RegistrationComponent,
-    PhoneMaskDirective,
-    ForgotPasswordComponent,
-    MyProfileComponent,
-    HomeComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    LayoutComponent
+    AppComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +21,12 @@ import { NavModule } from './nav.module';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    NavModule
+    NavModule,
+    DirectiveModule,
+    MyProfileModule,
+    RegistrationModule,
+    LoginModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

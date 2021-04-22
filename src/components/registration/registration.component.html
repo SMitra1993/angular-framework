@@ -109,7 +109,7 @@
                                 <div class="input-container">
                                     <input type="password" formControlName="password" class="form-control" id="password"
                                         placeholder="Enter password" name="password" [ngModel]=password required>
-                                    <i class="fa fa-info info-icon-format" [ngbTooltip]="list"></i>
+                                    <!-- <i class="fa fa-info info-icon-format" [ngbTooltip]="list"></i> -->
                                 </div>
                                 <pre class="error-text-format">{{(!registrationForm.controls.password.valid && registrationForm.controls.password.dirty) 
                                 || (registrationForm.controls.password.touched && !registrationForm.controls.password.valid)

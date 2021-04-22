@@ -22,7 +22,7 @@ export class MyProfileComponent implements OnInit {
   mobile: string = '(61)-404-884-806';
   fullAddress: string = this.address1 + ' ' + (this.address2 ? this.address2 + ' ' : '')
     + this.city + ' ' + this.state + ' - ' + this.pinCode;
-
+  // form: [{ 'key': string, 'value': string }] = [{ 'key': string, 'value': '' }];
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +30,9 @@ export class MyProfileComponent implements OnInit {
   }
 
   private _initForm() {
+
+    // this.form.push([{'key': '', 'value': ''}])
+
     this.myProfileForm = new FormGroup({
       'firstName': new FormControl(this.firstName, [
         Validators.pattern("^[A-Za-z -]+$"),
@@ -74,6 +77,6 @@ export class MyProfileComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.isEditable = false;
   }
 }
