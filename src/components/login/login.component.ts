@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   emailId: string = '';
   password: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this._initForm();
@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
 
   private _initForm() {
     this.loginForm = new FormGroup({
-      'emailId': new FormControl(null, [Validators.required,
-      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      'password': new FormControl(null, [
-        Validators.required
+      emailId: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
+      password: new FormControl(null, [Validators.required]),
     });
   }
 

@@ -10,6 +10,7 @@ import { DirectiveModule } from './directive.module';
 import { RegistrationModule } from '../components/registration/registration.module';
 import { LoginModule } from '../components/login/login.module';
 import { HomeModule } from 'src/components/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeModule } from 'src/components/home/home.module';
     MyProfileModule,
     RegistrationModule,
     LoginModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
