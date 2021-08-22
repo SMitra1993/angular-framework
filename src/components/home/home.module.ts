@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DirectiveModule } from '../../app/directive.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { LayoutComponent } from '../layout/layout.component';
@@ -14,7 +13,6 @@ import { NavModule } from 'src/app/nav.module';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        DirectiveModule,
         HomeRoutingModule,
         NavModule
     ],
