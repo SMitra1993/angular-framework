@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { HomeComponent } from '../components/home/home.component';
+import { HomeComponent } from '../views/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('../components/login/login.module').then((m) => m.LoginModule),
+      import('../views/login/login.module').then((m) => m.LoginModule),
     pathMatch: 'full',
   },
   {
     path: 'registration',
     loadChildren: () =>
-      import('../components/registration/registration.module').then(
+      import('../views/registration/registration.module').then(
         (m) => m.RegistrationModule
       ),
   },
   {
     path: 'forgot-password',
     loadChildren: () =>
-      import('../components/forgot-password/forgot-password.module').then(
+      import('../views/forgot-password/forgot-password.module').then(
         (m) => m.ForgotPasswordModule
       ),
   },
@@ -30,7 +30,7 @@ const routes: Routes = [
       {
         path: 'my-profile',
         loadChildren: () =>
-          import('../components/my-profile/my-profile.module').then(
+          import('../views/my-profile/my-profile.module').then(
             (m) => m.MyProfileModule
           ),
       },

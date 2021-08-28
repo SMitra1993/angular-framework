@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavModule } from './nav.module';
-import { HomeModule } from 'src/components/home/home.module';
+import { HomeModule } from 'src/views/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

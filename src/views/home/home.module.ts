@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { LayoutComponent } from '../layout/layout.component';
-import { HeaderComponent } from '../navigation/header/header.component';
-import { SidenavListComponent } from '../navigation/sidenav-list/sidenav-list.component';
+import { LayoutComponent } from '../../components/layout/layout.component';
+import { HeaderComponent } from '../../components/navigation/header/header.component';
+import { SidenavListComponent } from '../../components/navigation/sidenav-list/sidenav-list.component';
 import { NavModule } from 'src/app/nav.module';
 
 @NgModule({
