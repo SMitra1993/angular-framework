@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavModule } from './nav.module';
 import { HomeModule } from 'src/views/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     FormsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
     NavModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

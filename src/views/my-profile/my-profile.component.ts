@@ -5,12 +5,12 @@ import { MyProfileService } from 'src/services/my-profile/my-profile.service';
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss'],
+  styleUrls: ['./my-profile.component.scss']
 })
 export class MyProfileComponent implements OnInit {
   isEditable: boolean = false;
   myProfileForm!: FormGroup;
-  userId: string = 'MJohnson';
+  userId: string = 'mjohnson@gmail.com';
   firstName: string = '';
   lastName: string = '';
   address1: string = '';
@@ -41,7 +41,7 @@ export class MyProfileComponent implements OnInit {
     await this._myProfileService
       .getMyProfileData(this.userId)
       .then((res: any): any => {
-        if (!res) {
+        if (!res?.data) {
           return false;
         }
         console.log(res);
