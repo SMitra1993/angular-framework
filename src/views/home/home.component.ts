@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { LoginState } from 'src/login/store/reducer/login.reducer';
+import { Login } from 'src/models/login';
+import { selectLogin } from './../../login/store/selector/login.selectors';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +11,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  login$: Observable<Login[]>;
+  emailId: string | null = '';
+  constructor(private store: Store<LoginState>) {
+    this.login$ = this.store.pipe(select(selectLogin));
+    this.login$.subscribe((data) => {
+      this.emailId = data[0]
+        ? data[0].name
+        : localStorage.getItem('[Login] Load Logins');
+    });
+  }
 
   ngOnInit(): void {
     this.createDOM();

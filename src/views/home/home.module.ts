@@ -7,6 +7,8 @@ import { LayoutComponent } from '../../components/layout/layout.component';
 import { HeaderComponent } from '../../components/navigation/header/header.component';
 import { SidenavListComponent } from '../../components/navigation/sidenav-list/sidenav-list.component';
 import { NavModule } from 'src/app/nav.module';
+import { loginFeatureKey, reducer } from 'src/login/store/reducer/login.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
     imports: [
@@ -14,7 +16,8 @@ import { NavModule } from 'src/app/nav.module';
         FormsModule,
         ReactiveFormsModule,
         HomeRoutingModule,
-        NavModule
+        NavModule,
+        StoreModule.forFeature(loginFeatureKey, reducer)
     ],
     declarations: [HomeComponent, LayoutComponent ,HeaderComponent, SidenavListComponent]
 })
