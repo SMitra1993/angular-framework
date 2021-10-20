@@ -1,5 +1,9 @@
 import { Component, Host, OnInit, Optional, Self, SkipSelf } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadLogins, logout } from 'src/login/store/action/login.actions';
+import { Login } from 'src/models/login';
 import { MyProfileService } from 'src/services/my-profile/my-profile.service';
 
 @Component({
@@ -30,7 +34,7 @@ export class MyProfileComponent implements OnInit {
     ' - ' +
     this.pinCode;
   // form: [{ 'key': string, 'value': string }] = [{ 'key': string, 'value': '' }];
-  constructor(private _myProfileService: MyProfileService) {}
+  constructor(private router: Router,private store: Store, private _myProfileService: MyProfileService) {}
 
   ngOnInit(): void {
     this._initForm();
@@ -61,6 +65,13 @@ export class MyProfileComponent implements OnInit {
           res.data.pinCode,
           res.data.city
         );
+      }).catch((err)=> {
+        alert(err.message);
+        console.log(err);
+        const login = new Login();
+        this.router.navigate(['/', '/']);
+        localStorage.clear();
+        this.store.dispatch( logout() );
       });
   }
 

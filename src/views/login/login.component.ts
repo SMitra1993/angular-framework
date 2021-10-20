@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { loadLogins } from 'src/login/store/action/login.actions';
 import { LoginState } from 'src/login/store/reducer/login.reducer';
 import { Login } from 'src/models/login';
+import { LoginService } from 'src/services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,11 @@ export class LoginComponent implements OnInit {
   emailId: string = '';
   password: string = '';
 
-  constructor(private router: Router, private store: Store<LoginState>) {}
+  constructor(
+    private router: Router,
+    private store: Store<LoginState>,
+    private _loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this._initForm();
@@ -32,13 +37,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    const login = new Login();
-    login.name = this.loginForm.controls.emailId.value;
-    this.store.dispatch(loadLogins(login));
-    this.store.subscribe(function () {
-      localStorage.setItem('[Login] Load Logins', JSON.stringify(login.name));
+  async onSubmit() {
+    const userDetails = {
+      userId: this.loginForm.controls.emailId.value,
+      password: this.loginForm.controls.password.value,
+    };
+    await this._loginService.login(userDetails).then((res: any): any => {
+      if (!res?.data) {
+        return false;
+      }
+      localStorage.setItem('Token', JSON.stringify(res?.data));
+      const login = new Login();
+      login.name = this.loginForm.controls.emailId.value;
+      this.store.dispatch(loadLogins(login));
+      this.store.subscribe(function () {
+        localStorage.setItem('[Login] Load Logins', JSON.stringify(login.name));
+      });
+      this.router.navigate(['/', 'home']);
     });
-    this.router.navigate(['/', 'home']);
   }
 }
