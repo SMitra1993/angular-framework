@@ -59,6 +59,12 @@ const _counterReducer = createReducer(
       ...state,
       counter: +state.counter + action.count,
     };
+  }),
+  on(LoginAction.changeChannelName, (state) => {
+    return {
+      ...state,
+      channelName: 'Modified Tech Stack'
+    }
   })
 );
 
