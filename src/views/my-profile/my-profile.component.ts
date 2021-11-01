@@ -1,15 +1,40 @@
-import { Component, Host, OnInit, Optional, Self, SkipSelf } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  Component,
+  Host,
+  Inject,
+  InjectionToken,
+  OnInit,
+  Optional,
+  Self,
+  SkipSelf,
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadLogins, logout } from 'src/login/store/action/login.actions';
 import { Login } from 'src/models/login';
-import { MyProfileService } from 'src/services/my-profile/my-profile.service';
+import { MyProfileService } from '../../services/my-profile/my-profile.service';
+import * as loaderService from '../../services/loader/loader-service';
+// function coursesServiceProviderFactory(http: HttpClient): MyProfileService {
+//   return new MyProfileService(http);
+// }
+
+// const MyProfileService_TOKEN = new InjectionToken<MyProfileService>(
+//   'MyProfileService_TOKEN'
+// );
 
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss']
+  styleUrls: ['./my-profile.component.scss']//,
+  // providers: [
+  //   {
+  //     provide: MyProfileService,
+  //     useClass: MyProfileService,
+  //     deps: [HttpClient],
+  //   },
+  // ],
 })
 export class MyProfileComponent implements OnInit {
   isEditable: boolean = false;
@@ -34,7 +59,11 @@ export class MyProfileComponent implements OnInit {
     ' - ' +
     this.pinCode;
   // form: [{ 'key': string, 'value': string }] = [{ 'key': string, 'value': '' }];
-  constructor(private router: Router,private store: Store, private _myProfileService: MyProfileService) {}
+  constructor(
+    private router: Router,
+    private store: Store,
+    private _myProfileService: MyProfileService
+  ) {}
 
   ngOnInit(): void {
     this._initForm();
@@ -42,9 +71,11 @@ export class MyProfileComponent implements OnInit {
   }
 
   private async _getData() {
+    loaderService.pageLoader.sendMessage(true);
     await this._myProfileService
       .getMyProfileData(this.userId)
       .then((res: any): any => {
+        loaderService.pageLoader.sendMessage(false);
         if (!res?.data) {
           return false;
         }
@@ -65,13 +96,14 @@ export class MyProfileComponent implements OnInit {
           res.data.pinCode,
           res.data.city
         );
-      }).catch((err)=> {
+      })
+      .catch((err) => {
         alert(err.message);
         console.log(err);
         const login = new Login();
         this.router.navigate(['/', '/']);
         localStorage.clear();
-        this.store.dispatch( logout() );
+        this.store.dispatch(logout());
       });
   }
 
