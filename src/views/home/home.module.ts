@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { CounterComponent } from 'src/components/counter/counter/counter.component';
 import { CounterOutputComponent } from 'src/components/counter/counter-output/counter-output.component';
 import { CounterButtonsComponent } from 'src/components/counter/counter-buttons/counter-buttons.component';
+import { CustomCounterInputComponent } from 'src/components/counter/custom-counter-input/custom-counter-input.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { CounterButtonsComponent } from 'src/components/counter/counter-buttons/
     CounterComponent,
     CounterOutputComponent,
     CounterButtonsComponent,
+    CustomCounterInputComponent
   ],
 })
 export class HomeModule {}

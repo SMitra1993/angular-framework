@@ -1,10 +1,4 @@
-import {
-  Action,
-  createReducer,
-  INIT,
-  MetaReducer,
-  on,
-} from '@ngrx/store';
+import { Action, createReducer, INIT, MetaReducer, on } from '@ngrx/store';
 import { Login } from '../../../models/login';
 import { initialCounterState } from 'src/state/counter.state';
 import * as LoginAction from '../action/login.actions';
@@ -58,6 +52,12 @@ const _counterReducer = createReducer(
     return {
       ...state,
       counter: 0,
+    };
+  }),
+  on(LoginAction.customIncrement, (state, action) => {
+    return {
+      ...state,
+      counter: +state.counter + action.count,
     };
   })
 );
