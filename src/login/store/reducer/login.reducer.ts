@@ -1,5 +1,12 @@
-import { Action, ActionReducer, createReducer, INIT, MetaReducer, on } from '@ngrx/store';
-import { Login } from 'src/models/login';
+import {
+  Action,
+  createReducer,
+  INIT,
+  MetaReducer,
+  on,
+} from '@ngrx/store';
+import { Login } from '../../../models/login';
+import { initialCounterState } from 'src/state/counter.state';
 import * as LoginAction from '../action/login.actions';
 
 export const loginFeatureKey = 'login';
@@ -11,19 +18,19 @@ export interface LoginState {
 
 export const initialState: LoginState = {
   login: [],
-  logout: []
+  logout: [],
 };
 
 export function logout(reducer: any): any {
-  return (state: any, action: { type: any; } | null) => {
-    if ( action != null && action.type === LoginAction.logout.type) {
-      return reducer( undefined, {type: INIT});
+  return (state: any, action: { type: any } | null) => {
+    if (action != null && action.type === LoginAction.logout.type) {
+      return reducer(undefined, { type: INIT });
     }
     return reducer(state, action);
   };
 }
 
-export const metaReducers: MetaReducer[] = [ logout ];
+export const metaReducers: MetaReducer[] = [logout];
 
 export const loginReducer = createReducer(
   initialState,
@@ -33,7 +40,32 @@ export const loginReducer = createReducer(
   }))
 );
 
+const _counterReducer = createReducer(
+  initialCounterState,
+  on(LoginAction.increment, (state) => {
+    return {
+      ...state,
+      counter: state.counter + 1,
+    };
+  }),
+  on(LoginAction.decrement, (state) => {
+    return {
+      ...state,
+      counter: state.counter - 1,
+    };
+  }),
+  on(LoginAction.reset, (state) => {
+    return {
+      ...state,
+      counter: 0,
+    };
+  })
+);
 
 export function reducer(state: LoginState | undefined, action: Action): any {
   return loginReducer(state, action);
+}
+
+export function counterReducer(state: any, action: Action): any {
+  return _counterReducer(state, action);
 }

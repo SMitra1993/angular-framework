@@ -7,18 +7,32 @@ import { LayoutComponent } from '../../components/layout/layout.component';
 import { HeaderComponent } from '../../components/navigation/header/header.component';
 import { SidenavListComponent } from '../../components/navigation/sidenav-list/sidenav-list.component';
 import { NavModule } from 'src/app/nav.module';
-import { loginFeatureKey, reducer } from 'src/login/store/reducer/login.reducer';
+import {
+  loginFeatureKey,
+  reducer,
+} from 'src/login/store/reducer/login.reducer';
 import { StoreModule } from '@ngrx/store';
+import { CounterComponent } from 'src/components/counter/counter/counter.component';
+import { CounterOutputComponent } from 'src/components/counter/counter-output/counter-output.component';
+import { CounterButtonsComponent } from 'src/components/counter/counter-buttons/counter-buttons.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HomeRoutingModule,
-        NavModule,
-        StoreModule.forFeature(loginFeatureKey, reducer)
-    ],
-    declarations: [HomeComponent, LayoutComponent ,HeaderComponent, SidenavListComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HomeRoutingModule,
+    NavModule,
+    StoreModule.forFeature(loginFeatureKey, reducer),
+  ],
+  declarations: [
+    HomeComponent,
+    LayoutComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    CounterComponent,
+    CounterOutputComponent,
+    CounterButtonsComponent,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

@@ -10,3 +10,7 @@ export const loadLogins = createAction(
 export const logout = createAction(
   '[Users] logout request'
 );
+
+export const increment = createAction('increment');
+export const decrement = createAction('decrement');
+export const reset = createAction('reset');
