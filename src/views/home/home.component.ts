@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { LoginState } from 'src/login/store/reducer/login.reducer';
-import { Login } from 'src/models/login';
-import { selectLogin } from './../../login/store/selector/login.selectors';
+import { LoginState } from '../../store/reducer/login.reducer';
+import { Login } from '../../models/login';
+import { selectLogin } from '../../store/selector/login.selectors';
 
 @Component({
   selector: 'app-home',

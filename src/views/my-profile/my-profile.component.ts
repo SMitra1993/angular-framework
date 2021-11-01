@@ -12,7 +12,7 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadLogins, logout } from 'src/login/store/action/login.actions';
+import { logout } from '../../store/action/login.actions';
 import { Login } from 'src/models/login';
 import { MyProfileService } from '../../services/my-profile/my-profile.service';
 import * as loaderService from '../../services/loader/loader-service';

@@ -10,7 +10,7 @@ import { NavModule } from 'src/app/nav.module';
 import {
   loginFeatureKey,
   reducer,
-} from 'src/login/store/reducer/login.reducer';
+} from '../../store/reducer/login.reducer';
 import { StoreModule } from '@ngrx/store';
 import { CounterComponent } from 'src/components/counter/counter/counter.component';
 import { CounterOutputComponent } from 'src/components/counter/counter-output/counter-output.component';

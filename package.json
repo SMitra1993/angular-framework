@@ -28,7 +28,7 @@
     "@ngrx/effects": "^12.5.0",
     "@ngrx/entity": "^12.5.0",
     "@ngrx/store": "^12.5.0",
-    "@ngrx/store-devtools": "^12.5.0",
+    "@ngrx/store-devtools": "^12.5.1",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",

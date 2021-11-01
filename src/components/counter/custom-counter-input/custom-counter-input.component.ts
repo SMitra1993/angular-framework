@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import {
   changeChannelName,
   customIncrement,
-} from 'src/login/store/action/login.actions';
-import { getChannelName } from 'src/login/store/selector/login.selectors';
-import { CounterState } from 'src/state/counter.state';
+} from '../../../store/action/login.actions';
+import { getChannelName } from '../../../store/selector/login.selectors';
+import { CounterState } from '../../../store/state/counter.state';
 
 @Component({
   selector: 'app-custom-counter-input',

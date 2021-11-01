@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadLogins } from 'src/login/store/action/login.actions';
-import { LoginState } from 'src/login/store/reducer/login.reducer';
+import { loadLogins } from '../../store/action/login.actions';
+import { LoginState } from '../../store/reducer/login.reducer';
 import { Login } from 'src/models/login';
 import { LoginService } from 'src/services/login/login.service';
 

@@ -1,6 +1,6 @@
 import { Action, createReducer, INIT, MetaReducer, on } from '@ngrx/store';
-import { Login } from '../../../models/login';
-import { initialCounterState } from 'src/state/counter.state';
+import { Login } from '../../models/login';
+import { initialCounterState } from '../../store/state/counter.state';
 import * as LoginAction from '../action/login.actions';
 
 export const loginFeatureKey = 'login';
