@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.state';
 import { Observable } from 'rxjs';
 import { Post } from 'src/models/post';
-import { getPost } from 'src/store/selector/profile.selectors';
+import { getPost } from 'src/store/selector/post.selectors';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { addPost } from 'src/store/action/post.action';
 import { Router } from '@angular/router';

@@ -54,6 +54,13 @@ const routes: Routes = [
           import('../views/posts/add/add-post.module').then(
             (m) => m.AddPostModule
           ),
+      },
+      {
+        path: 'post/edit/:id',
+        loadChildren: () =>
+          import('../views/posts/edit/edit-post.module').then(
+            (m) => m.EditPostModule
+          ),
       }
     ],
   },
