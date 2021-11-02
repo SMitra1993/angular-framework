@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Post } from 'src/models/post';
 import { getPost } from 'src/store/selector/profile.selectors';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { addPost } from 'src/store/action/post.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -12,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-post.component.scss'], //,
 })
 export class AddPostComponent implements OnInit {
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   postForm!: FormGroup;
   posts!: Observable<Post[]>;
@@ -33,6 +35,14 @@ export class AddPostComponent implements OnInit {
     if (!this.postForm.valid) {
       return;
     }
+
+    const post: Post = {
+      description: this.postForm.value.description,
+      title: this.postForm.value.title,
+    };
+
+    this.store.dispatch(addPost({ post }));
+    this.router.navigate(['/home', 'post']);
   }
 
   showDescriptionErrorMessage(): any {

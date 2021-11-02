@@ -1,5 +1,5 @@
 import { counterReducer } from '../store/reducer/login.reducer';
-import { postReducer } from '../store/reducer/profile.reducer';
+import { postReducer } from './reducer/post.reducer';
 import { CounterState } from '../store/state/counter.state';
 import { PostState } from './state/post.state';
 
