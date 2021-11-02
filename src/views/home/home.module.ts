@@ -30,11 +30,7 @@ import { CustomCounterInputComponent } from 'src/components/counter/custom-count
     HomeComponent,
     LayoutComponent,
     HeaderComponent,
-    SidenavListComponent,
-    CounterComponent,
-    CounterOutputComponent,
-    CounterButtonsComponent,
-    CustomCounterInputComponent
+    SidenavListComponent
   ],
 })
 export class HomeModule {}

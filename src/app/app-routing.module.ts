@@ -34,6 +34,13 @@ const routes: Routes = [
             (m) => m.MyProfileModule
           ),
       },
+      {
+        path: 'counter',
+        loadChildren: () =>
+          import('../components/counter/counter.module').then(
+            (m) => m.CounterModule
+          ),
+      },
     ],
   },
 ];

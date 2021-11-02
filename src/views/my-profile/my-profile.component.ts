@@ -16,6 +16,7 @@ import { logout } from '../../store/action/login.actions';
 import { Login } from 'src/models/login';
 import { MyProfileService } from '../../services/my-profile/my-profile.service';
 import * as loaderService from '../../services/loader/loader-service';
+import { AppState } from 'src/store/app.state';
 // function coursesServiceProviderFactory(http: HttpClient): MyProfileService {
 //   return new MyProfileService(http);
 // }
@@ -61,7 +62,7 @@ export class MyProfileComponent implements OnInit {
   // form: [{ 'key': string, 'value': string }] = [{ 'key': string, 'value': '' }];
   constructor(
     private router: Router,
-    private store: Store,
+    private store: Store<AppState>,
     private _myProfileService: MyProfileService
   ) {}
 
