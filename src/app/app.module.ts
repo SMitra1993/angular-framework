@@ -26,7 +26,7 @@ import { ConfirmComponent } from 'src/components/confirm/confirm.component';
     HttpClientModule,
     HomeModule,
     RouterModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     !environment.production
       ? StoreDevtoolsModule.instrument({
           logOnly: environment.production, // Restrict extension to log-only mode
