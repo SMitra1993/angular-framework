@@ -12,9 +12,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducer } from '../store/app.state';
+import { ConfirmComponent } from 'src/components/confirm/confirm.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ConfirmComponent],
   imports: [
     FormsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
