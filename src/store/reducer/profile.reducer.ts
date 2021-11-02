@@ -1,8 +1,8 @@
 import { Action, createReducer } from "@ngrx/store";
-import { initialState } from "../../store/state/profile.state";
+import { initialState } from "../state/post.state";
 
-const _profileReducer = createReducer(initialState);
+const _postReducer = createReducer(initialState);
 
-export function profileReducer(state: any, action: Action) {
-    return _profileReducer(state, action);
+export function postReducer(state: any, action: Action) {
+    return _postReducer(state, action);
 }

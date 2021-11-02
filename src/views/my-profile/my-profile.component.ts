@@ -69,6 +69,7 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this._initForm();
     this._getData();
+    
   }
 
   private async _getData() {

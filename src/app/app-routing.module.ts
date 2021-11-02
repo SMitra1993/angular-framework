@@ -41,6 +41,20 @@ const routes: Routes = [
             (m) => m.CounterModule
           ),
       },
+      {
+        path: 'post',
+        loadChildren: () =>
+          import('../views/posts/home/post.module').then(
+            (m) => m.PostModule
+          ),
+      },
+      {
+        path: 'post/add',
+        loadChildren: () =>
+          import('../views/posts/add/add-post.module').then(
+            (m) => m.AddPostModule
+          ),
+      }
     ],
   },
 ];

@@ -1,21 +1,31 @@
 <mat-nav-list>
-    <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
-        <i class="fa fa-home icon"></i> <span class="nav-caption">Home</span>
-    </a>
-    <a mat-list-item routerLink="/home/my-profile" (click)="onSidenavClose()">
-        <i class="fa fa-user-circle icon"></i> <span class="nav-caption">My Profile</span>
-    </a>
-    <a mat-list-item routerLink="/home/counter" (click)="onSidenavClose()">
-        <i class="fa fa-user-circle icon"></i> <span class="nav-caption">Counter</span>
-    </a>
-    <mat-list-item [matMenuTriggerFor]="menu">
-        <i class="fa fa-tasks icon"></i>&nbsp; <a matline>Project</a>
-    </mat-list-item>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="onSidenavClose()">Incidents</button>
-        <button mat-menu-item (click)="onSidenavClose()">Technical Workflow</button>
-        <button mat-menu-item (click)="onSidenavClose()">Functional Workflow</button>
-        <button mat-menu-item (click)="onSidenavClose()">Estimation & Billing</button>
-        <button mat-menu-item (click)="onSidenavClose()">SOW</button>
-    </mat-menu>
+  <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+    <i class="fa fa-home icon"></i> <span class="nav-caption">Home</span>
+  </a>
+  <a mat-list-item routerLink="/home/my-profile" (click)="onSidenavClose()">
+    <i class="fa fa-user-circle icon"></i>
+    <span class="nav-caption">My Profile</span>
+  </a>
+  <a mat-list-item routerLink="/home/counter" (click)="onSidenavClose()">
+    <i class="fa fa-user-circle icon"></i>
+    <span class="nav-caption">Counter</span>
+  </a>
+  <a mat-list-item routerLink="/home/post" (click)="onSidenavClose()">
+    <i class="fa fa-user-circle icon"></i>
+    <span class="nav-caption">Posts</span>
+  </a>
+  <mat-list-item [matMenuTriggerFor]="menu">
+    <i class="fa fa-tasks icon"></i>&nbsp; <a matline>Project</a>
+  </mat-list-item>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onSidenavClose()">Incidents</button>
+    <button mat-menu-item (click)="onSidenavClose()">Technical Workflow</button>
+    <button mat-menu-item (click)="onSidenavClose()">
+      Functional Workflow
+    </button>
+    <button mat-menu-item (click)="onSidenavClose()">
+      Estimation & Billing
+    </button>
+    <button mat-menu-item (click)="onSidenavClose()">SOW</button>
+  </mat-menu>
 </mat-nav-list>

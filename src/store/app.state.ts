@@ -1,14 +1,14 @@
 import { counterReducer } from '../store/reducer/login.reducer';
-import { profileReducer } from '../store/reducer/profile.reducer';
+import { postReducer } from '../store/reducer/profile.reducer';
 import { CounterState } from '../store/state/counter.state';
-import { ProfileState } from '../store/state/profile.state';
+import { PostState } from './state/post.state';
 
 export interface AppState {
   counter: CounterState;
-  profile: ProfileState;
+  posts: PostState;
 }
 
 export const appReducer = {
   counter: counterReducer,
-  profile: profileReducer,
+  posts: postReducer,
 };
