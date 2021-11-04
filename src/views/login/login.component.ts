@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadLogins } from '../../store/action/login.actions';
-import { LoginState } from '../../store/reducer/login.reducer';
-import { Login } from 'src/models/login';
 import { LoginService } from 'src/services/login/login.service';
+import { AppState } from 'src/store/app.state';
+import { loginStart } from 'src/store/action/login.action';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private store: Store<LoginState>,
+    private store: Store<AppState>,
     private _loginService: LoginService
   ) {}
 
@@ -42,18 +41,25 @@ export class LoginComponent implements OnInit {
       userId: this.loginForm.controls.emailId.value,
       password: this.loginForm.controls.password.value,
     };
-    await this._loginService.login(userDetails).then((res: any): any => {
-      if (!res?.data) {
-        return false;
-      }
-      localStorage.setItem('Token', JSON.stringify(res?.data));
-      const login = new Login();
-      login.name = this.loginForm.controls.emailId.value;
-      this.store.dispatch(loadLogins(login));
-      this.store.subscribe(function () {
-        localStorage.setItem('[Login] Load Logins', JSON.stringify(login.name));
-      });
-      this.router.navigate(['/', 'home']);
-    });
+
+    this.store.dispatch(
+      loginStart({
+        userId: this.loginForm.controls.emailId.value,
+        password: this.loginForm.controls.password.value,
+      })
+    );
+    // await this._loginService.login(userDetails).then((res: any): any => {
+    //   if (!res?.data) {
+    //     return false;
+    //   }
+    //   localStorage.setItem('Token', JSON.stringify(res?.data));
+    //   const login = new Login();
+    //   login.name = this.loginForm.controls.emailId.value;
+    //   // this.store.dispatch(loadLogins(login));
+    //   this.store.subscribe(function () {
+    //     localStorage.setItem('[Login] Load Logins', JSON.stringify(login.name));
+    //   });
+    //   this.router.navigate(['/', 'home']);
+    // });
   }
 }

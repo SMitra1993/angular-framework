@@ -1,77 +1,17 @@
-import { Action, createReducer, INIT, MetaReducer, on } from '@ngrx/store';
-import { Login } from '../../models/login';
-import { initialCounterState } from '../../store/state/counter.state';
-import * as LoginAction from '../action/login.actions';
+import { Action, createReducer, on } from '@ngrx/store';
+import { loginSuccess } from '../action/login.action';
+import { initialState } from '../state/login.state';
 
-export const loginFeatureKey = 'login';
-
-export interface LoginState {
-  login: Login[];
-  logout: Login[];
-}
-
-export const initialState: LoginState = {
-  login: [],
-  logout: [],
-};
-
-export function logout(reducer: any): any {
-  return (state: any, action: { type: any } | null) => {
-    if (action != null && action.type === LoginAction.logout.type) {
-      return reducer(undefined, { type: INIT });
-    }
-    return reducer(state, action);
-  };
-}
-
-export const metaReducers: MetaReducer[] = [logout];
-
-export const loginReducer = createReducer(
+export const _authService = createReducer(
   initialState,
-  on(LoginAction.loadLogins, (state: LoginState, { login }) => ({
-    ...state,
-    login: [...state.login, login],
-  }))
-);
-
-const _counterReducer = createReducer(
-  initialCounterState,
-  on(LoginAction.increment, (state) => {
+  on(loginSuccess, (state: any, action: any) => {
     return {
       ...state,
-      counter: state.counter + 1,
+      user: action.user,
     };
-  }),
-  on(LoginAction.decrement, (state) => {
-    return {
-      ...state,
-      counter: state.counter - 1,
-    };
-  }),
-  on(LoginAction.reset, (state) => {
-    return {
-      ...state,
-      counter: 0,
-    };
-  }),
-  on(LoginAction.customIncrement, (state, action) => {
-    return {
-      ...state,
-      counter: +state.counter + action.count,
-    };
-  }),
-  on(LoginAction.changeChannelName, (state) => {
-    return {
-      ...state,
-      channelName: 'Modified Tech Stack'
-    }
   })
 );
 
-export function reducer(state: LoginState | undefined, action: Action): any {
-  return loginReducer(state, action);
-}
-
-export function counterReducer(state: any, action: Action): any {
-  return _counterReducer(state, action);
+export function authReducer(state: any, action: Action) {
+  return _authService(state, action);
 }

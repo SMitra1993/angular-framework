@@ -15,6 +15,7 @@ import { appReducer } from '../store/app.state';
 import { ConfirmComponent } from 'src/components/confirm/confirm.component';
 import { TokenInterceptorService } from 'src/services/interceptor/token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, ConfirmComponent],
@@ -30,17 +31,20 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     !environment.production
       ? StoreDevtoolsModule.instrument({
           logOnly: environment.production, // Restrict extension to log-only mode
         })
       : [],
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS, 
-    useClass: TokenInterceptorService, 
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
