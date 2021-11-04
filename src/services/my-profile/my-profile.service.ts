@@ -16,9 +16,7 @@ export class MyProfileService implements MyProfileInterface {
   async getMyProfileData(userId: string) {
     let promise = new Promise((resolve, reject) => {
       this._httpClient
-        .get(`${this.url}/my-profile-details/${userId}`, {
-          headers: this.headers = this.headers.set('authorization', this.token),
-        })
+        .get(`${this.url}/my-profile-details/${userId}`)
         .toPromise()
         .then((res) => {
           // Success

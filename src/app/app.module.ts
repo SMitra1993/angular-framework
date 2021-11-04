@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavModule } from './nav.module';
 import { HomeModule } from 'src/views/home/home.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducer } from '../store/app.state';
 import { ConfirmComponent } from 'src/components/confirm/confirm.component';
+import { TokenInterceptorService } from 'src/services/interceptor/token-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, ConfirmComponent],
@@ -26,6 +28,7 @@ import { ConfirmComponent } from 'src/components/confirm/confirm.component';
     HttpClientModule,
     HomeModule,
     RouterModule,
+    ToastrModule.forRoot(),
     StoreModule.forRoot({}),
     !environment.production
       ? StoreDevtoolsModule.instrument({
@@ -33,7 +36,11 @@ import { ConfirmComponent } from 'src/components/confirm/confirm.component';
         })
       : [],
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService, 
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

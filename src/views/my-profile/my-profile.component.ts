@@ -73,11 +73,9 @@ export class MyProfileComponent implements OnInit {
   }
 
   private async _getData() {
-    loaderService.pageLoader.sendMessage(true);
     await this._myProfileService
       .getMyProfileData(this.userId)
       .then((res: any): any => {
-        loaderService.pageLoader.sendMessage(false);
         if (!res?.data) {
           return false;
         }
