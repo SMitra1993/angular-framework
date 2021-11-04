@@ -1,3 +1,3 @@
 export interface LoginInterface {
-    login(userDetails: any): any;
+    login(userId: string, password: string): any;
 }

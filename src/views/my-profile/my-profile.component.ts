@@ -12,10 +12,9 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { logout } from '../../store/action/login.actions';
-import { Login } from 'src/models/login';
+import { logout } from '../../store/action/counter.actions';
+import { Login } from '../../models/login';
 import { MyProfileService } from '../../services/my-profile/my-profile.service';
-import * as loaderService from '../../services/loader/loader-service';
 import { AppState } from 'src/store/app.state';
 // function coursesServiceProviderFactory(http: HttpClient): MyProfileService {
 //   return new MyProfileService(http);

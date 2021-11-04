@@ -4,8 +4,8 @@ import { AppState } from 'src/store/app.state';
 import {
   changeChannelName,
   customIncrement,
-} from '../../../store/action/login.actions';
-import { getChannelName } from '../../../store/selector/login.selectors';
+} from '../../../store/action/counter.actions';
+import { getChannelName } from '../../../store/selector/counter.selectors';
 import { CounterState } from '../../../store/state/counter.state';
 
 @Component({

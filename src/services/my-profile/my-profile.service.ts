@@ -12,7 +12,6 @@ export class MyProfileService implements MyProfileInterface {
   headers = new HttpHeaders({
     'Content-Type': 'application/json; charset=utf-8',
   });
-  token = JSON.stringify(localStorage.getItem('Token')).replace(/"/g, '').replace(/\\/g, '');
   async getMyProfileData(userId: string) {
     let promise = new Promise((resolve, reject) => {
       this._httpClient

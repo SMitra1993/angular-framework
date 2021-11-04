@@ -1,4 +1,4 @@
-import { counterReducer } from '../store/reducer/login.reducer';
+import { counterReducer } from './reducer/counter.reducer';
 import { postReducer } from './reducer/post.reducer';
 import { CounterState } from '../store/state/counter.state';
 import { PostState } from './state/post.state';

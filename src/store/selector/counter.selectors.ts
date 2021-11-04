@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CounterState } from 'src/store/state/counter.state';
-import * as fromLogin from '../reducer/login.reducer';
+import * as fromLogin from '../reducer/counter.reducer';
 
-export const selectLoginKey = createFeatureSelector<fromLogin.LoginState>(
-  fromLogin.loginFeatureKey
-);
+// export const selectLoginKey = createFeatureSelector<fromLogin.LoginState>(
+//   fromLogin.loginFeatureKey
+// );
 
 export const COUNTER_STATE_NAME = 'counter';
 
@@ -18,7 +18,7 @@ export const getChannelName = createSelector(getCounterState, (state) => {
   return state.channelName;
 });
 
-export const selectLogin = createSelector(
-  selectLoginKey,
-  (state: fromLogin.LoginState) => state.login
-);
+// export const selectLoginKey = createSelector(
+//   selectLoginKey,
+//   (state: fromLogin.LoginState) => state.login
+// );

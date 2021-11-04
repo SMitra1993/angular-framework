@@ -20,7 +20,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   ok!: string;
   readonly started = Date.now();
   private AUTH_HEADER = 'authorization';
-  readonly token = JSON.stringify(localStorage.getItem('Token'))
+  readonly token = JSON.stringify(localStorage.getItem('token'))
     .replace(/"/g, '')
     .replace(/\\/g, '');
   intercept(

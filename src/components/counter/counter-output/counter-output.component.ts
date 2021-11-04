@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { AppState } from 'src/store/app.state';
-import { COUNTER_STATE_NAME, getCounter } from '../../../store/selector/login.selectors';
+import { COUNTER_STATE_NAME, getCounter } from '../../../store/selector/counter.selectors';
 import { CounterState } from '../../../store/state/counter.state';
 
 @Component({

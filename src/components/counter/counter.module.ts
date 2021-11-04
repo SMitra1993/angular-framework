@@ -8,8 +8,8 @@ import { CounterButtonsComponent } from './counter-buttons/counter-buttons.compo
 import { CounterOutputComponent } from './counter-output/counter-output.component';
 import { CustomCounterInputComponent } from './custom-counter-input/custom-counter-input.component';
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from 'src/store/reducer/login.reducer';
-import { COUNTER_STATE_NAME } from 'src/store/selector/login.selectors';
+import { counterReducer } from 'src/store/reducer/counter.reducer';
+import { COUNTER_STATE_NAME } from 'src/store/selector/counter.selectors';
 
 @NgModule({
     imports: [
