@@ -21,19 +21,7 @@ export class MyProfileService implements MyProfileInterface {
           // Success
           resolve(res);
         })
-        .catch((err) => {
-          if (err.status == 401) {
-            err['message'] = 'Unathourised User';
-            reject(err);
-          }
-        });
     });
     return promise;
-    // this.headers = this.headers.set('authorization', this.token);
-    // return await this._httpClient
-    //   .get(`${this.url}/my-profile-details/${userId}`, {
-    //     headers: this.headers,
-    //   })
-    //   .toPromise();
   }
 }

@@ -7,15 +7,22 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { catchError, delay, finalize, tap } from 'rxjs/operators';
 import { ResponseCodes } from 'src/constants/response-codes';
 import * as loaderService from '../../services/loader/loader-service';
+import { logout } from '../../store/action/counter.actions';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
-  constructor(private toastr: ToastrService) {}
+  constructor(
+    private toastr: ToastrService,
+    private router: Router,
+    private store: Store
+  ) {}
 
   ok!: string;
   readonly started = Date.now();
@@ -23,6 +30,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   readonly token = JSON.stringify(localStorage.getItem('token'))
     .replace(/"/g, '')
     .replace(/\\/g, '');
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -40,13 +48,14 @@ export class TokenInterceptorService implements HttpInterceptor {
             finalize(() => {
               const elapsed = Date.now() - this.started;
               const msg = `${req.method} "${req.urlWithParams}" ${this.ok} in ${elapsed} ms.`;
+              console.log(msg)
             }),
             tap(
               (event: HttpEvent<any>) =>
                 (this.ok = event instanceof HttpResponse ? 'succeeded' : ''),
               (error: HttpErrorResponse) => (this.ok = 'failed')
-            )
-            // finalize(() => loaderService.pageLoader.sendMessage(false))
+            ),
+            finalize(() => loaderService.pageLoader.sendMessage(false))
           )
           .pipe(
             tap((event: HttpEvent<any>) => {
@@ -58,11 +67,8 @@ export class TokenInterceptorService implements HttpInterceptor {
           )
           .pipe(
             catchError((error: HttpErrorResponse) => {
-              if (error.status !== 401) {
-                // 401 handled in auth.interceptor
-                loaderService.pageLoader.sendMessage(false);
-                this.toastr.error(this.responseErrorMessage(error));
-              }
+              loaderService.pageLoader.sendMessage(false);
+              this.toastr.error(this.responseErrorMessage(error));
               return throwError(error);
             })
           );
@@ -76,27 +82,25 @@ export class TokenInterceptorService implements HttpInterceptor {
             (this.ok = event instanceof HttpResponse ? 'succeeded' : ''),
           (error: HttpErrorResponse) => (this.ok = 'failed')
         ),
-        delay(5000),
+        delay(2000),
 
         finalize(() => {
           const elapsed = Date.now() - this.started;
           const msg = `${req.method} "${req.urlWithParams}" ${this.ok} in ${elapsed} ms.`;
-        })
-        // finalize(() => loaderService.pageLoader.sendMessage(false)),
+        }),
+        finalize(() => loaderService.pageLoader.sendMessage(false))
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if (error.status !== 401) {
-            // 401 handled in auth.interceptor
-            this.toastr.error(this.responseErrorMessage(error));
-          }
+          loaderService.pageLoader.sendMessage(false);
+          this.toastr.error(this.responseErrorMessage(error));
           return throwError(error);
         })
       );
   }
 
   responseErrorMessage(response: any): string {
-    let errorMessage = response.statusText;
+    let errorMessage = response.status;
 
     switch (response.status) {
       case ResponseCodes.success:
@@ -105,10 +109,13 @@ export class TokenInterceptorService implements HttpInterceptor {
         errorMessage = `Request failed. ${response.status} ${response.url}`;
         break;
       case ResponseCodes.unauthorised:
+        localStorage.clear();
+        this.router.navigate(['/', '/']);
+        this.store.dispatch(logout());
         errorMessage = `Authentication failed.`;
         break;
       case ResponseCodes.forbidden:
-        errorMessage = `You don not have sufficient permissions.`;
+        errorMessage = `You do not have sufficient permissions.`;
         break;
       case ResponseCodes.notFound:
         errorMessage = `Request failed. Endpoint not found. ${response.status} ${response.url}`;
@@ -120,7 +127,7 @@ export class TokenInterceptorService implements HttpInterceptor {
         errorMessage = `Request failed. Server error. Contact helpdesk. ${response.status} ${response.url}`;
         break;
       default:
-        errorMessage = `Request failed. Server error. Contact helpdesk.`
+        errorMessage = `Request failed. Server error. Contact helpdesk.`;
         break;
     }
 

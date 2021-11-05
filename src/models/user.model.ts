@@ -1,3 +1,3 @@
 export class User {
-  constructor(private token: string) {}
+  constructor(private token: string, private userId: string) {}
 }
